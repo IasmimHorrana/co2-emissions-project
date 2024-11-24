@@ -9,7 +9,6 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     volumes:
-      - postgresql_bin:/usr/lib/postgresql
       - postgresql_data:/var/lib/postgresql/data
       - ./co2_emissions.sql:/docker-entrypoint-initdb.d/co2_emissions.sql  # Script inicial
       - ./files:/files  # Pasta para arquivos adicionais
