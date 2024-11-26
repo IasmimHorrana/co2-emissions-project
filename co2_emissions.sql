@@ -5584,7 +5584,7 @@ INSERT INTO co2_emissions (entity, code, year, annual_co2_per_capita) VALUES
 	('Cote d Ivoire', 'CIV', '2020', '0.3809563'),
 	('Cote d Ivoire', 'CIV', '2021', '0.4611723'),
 	('Cote d Ivoire', 'CIV', '2022', '0.44888434'),
-	('Cote d Ivoire', 'CIV', '2023', '0.42340207')
+	('Cote d Ivoire', 'CIV', '2023', '0.42340207'),
 	('Croatia', 'HRV', '1885', '0.0022586267'),
 	('Croatia', 'HRV', '1890', '0.0064808424'),
 	('Croatia', 'HRV', '1891', '0.0074941767'),
