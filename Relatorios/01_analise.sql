@@ -1,16 +1,27 @@
-/* 1. Tendências Temporais por País
-Como as emissões de CO₂ per capita mudaram ao longo do tempo para países específicos?
-Quais países tiveram o maior aumento ou queda nas emissões entre dois anos consecutivos?*/
+/* 1. Como as emissões de CO₂ per capita mudaram ao longo do tempo de 20 para países específicos?*/
+
+SELECT 
+	entity,
+	year,
+	annual_co2_per_capita
+FROM 
+	co2_emissions
+WHERE 
+	entity = 'Qatar', '' AND year >= 2000
+	
+-- Encontre a média, o mínimo, e o máximo das emissões para o Qatar, para obter uma visão mais ampla.*/
+
+
+	
 
 /* 2. Ranking de Países
-- Quais são os países com as maiores e menores emissões de CO₂ per capita em um determinado ano?
-Como o ranking dos países mudou ao longo do tempo (por exemplo, um país subiu ou caiu em relação a outros)?*/
+Quais são os países com as maiores e menores emissões de CO₂ per capita em um determinado ano?*/
 
 SELECT 
     entity, 
     year, 
     annual_co2_per_capita, 
-    RANK() OVER (ORDER BY annual_co2_per_capita DESC) AS rank_maior
+    RANK() OVER (ORDER BY annual_co2_per_capita DESC) AS rank_maior -- Principal conceito de WF, cria uma "janela" onde fazem nossos calculos
 FROM 
     co2_emissions
 WHERE 
@@ -19,8 +30,7 @@ ORDER BY
     annual_co2_per_capita DESC;
 
 /* 3. Média Anual Global
-- Qual é a média de emissões de CO₂ per capita global por ano? Isso ajuda a identificar se as emissões estão aumentando ou diminuindo globalmente.
-Existe alguma tendência clara de crescimento ou declínio ao longo das décadas?*/
+Qual é a média de emissões de CO₂ per capita global por ano? (Isso ajuda a identificar se as emissões estão aumentando ou diminuindo globalmente).*/
 
 SELECT ROUND(AVG(annual_co2_per_capita),4) AS "Media", year
 FROM co2_emissions 
@@ -55,3 +65,16 @@ Quais países têm as menores emissões ao longo do tempo? Algum deles reduziu s
 /* 10. Tendência Global
 Existe um padrão claro de aumento ou diminuição nas emissões de CO₂ per capita quando você considera todos os países juntos?
 Como os valores médios de emissões globais mudaram por décadas ou por intervalos de tempo mais longos?*/
+
+/* 11. Média por continente encontrado no dataset: */
+
+SELECT 
+    entity AS continent, 
+    ROUND(AVG(annual_co2_per_capita),4) AS avg_emission
+FROM 
+    co2_emissions
+WHERE 
+    entity IN ('Africa', 'Asia', 'Europe', 'North America', 'South America')
+GROUP BY 
+    entity;
+
